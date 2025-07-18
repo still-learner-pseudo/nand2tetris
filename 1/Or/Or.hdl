@@ -1,0 +1,15 @@
+// author: Saathvikk Muthyala
+/**
+ * Or gate:
+ * if (a or b) out = 1, else out = 0
+ */
+
+CHIP Or {
+	IN a, b;
+	OUT out;
+
+	PARTS:
+	Nand(a= a, b= a, out= notA);
+	Nand(a= b, b= b, out= notB);
+	Nand(a= notA, b= notB, out= out);
+}
