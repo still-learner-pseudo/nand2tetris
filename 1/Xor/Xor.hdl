@@ -1,0 +1,16 @@
+// author: Saathvikk Muthyala
+/**
+ * Exclusive-or gate:
+ * if ((a and Not(b)) or (Not(a) and b)) out = 1, else out = 0
+ */
+
+CHIP Xor {
+	IN a, b;
+	OUT out;
+
+	PARTS:
+	Nand(a= a, b= b, out= notAB);
+	Nand(a= a, b= notAB, out= AnotAB);
+	Nand(a= b, b= notAB, out= BnotAB);
+	Nand(a= AnotAB, b= BnotAB, out= out);
+}
